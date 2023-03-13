@@ -1,0 +1,65 @@
+##########################################################################################
+### Follow these directions to build the server
+##########################################################################################
+
+### Instally Flask for Python
+pip install flask
+pip install psycopg2-binary
+
+$ pip freeze --local > requirements.txt
+
+
+##########################################################################################
+### Download Postgresql - Currently at 15.2.1
+### Dev Password - colout
+### Port - 5432
+## 
+## Installation Directory: C:\Program Files\PostgreSQL\15
+## Server Installation Directory: C:\Program Files\PostgreSQL\15
+## Data Directory: C:\Program Files\PostgreSQL\15\data
+## Database Port: 5432
+## Database Superuser: postgres
+## Operating System Account: NT AUTHORITY\NetworkService
+## Database Service: postgresql-x64-15
+## Command Line Tools Installation Directory: C:\Program Files\PostgreSQL\15
+## pgAdmin4 Installation Directory: C:\Program Files\PostgreSQL\15\pgAdmin 4
+## Stack Builder Installation Directory: C:\Program Files\PostgreSQL\15
+## Installation Log: C:\Users\jense\AppData\Local\Temp\install-postgresql.log
+##########################################################################################
+CREATE DATABASE colout
+    WITH
+    OWNER = postgres
+    TEMPLATE = template0
+    ENCODING = 'UTF8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+COMMENT ON DATABASE colout
+    IS 'Test DB for Columbia Outdoor';
+
+
+##################################################################################
+#  ENV - DEV
+##    Linux
+##
+## This should be in the launch.json to run from 'vscode'
+##            "env": {
+                "FLASK_APP": "/path/to/app.py",
+                "FLASK_ENV": "development",
+                "FLASK_DEBUG": "0",
+                "AAA": "value of AAA env var",
+                "BBB": "value of BBB env var",
+                "CCC": "value of CCC env var"
+            },
+##################################################################################
+export POSTGRES_URL="127.0.0.1:5432"
+export POSTGRES_USER="postgres"
+export POSTGRES_DB="colout"
+export POSTGRES_PW="NOTAPASSWORD"
+
+### Start the app
+export FLASK_APP=test
+python -m flask run --help
+
+
