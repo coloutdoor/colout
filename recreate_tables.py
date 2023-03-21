@@ -3,6 +3,15 @@ from sqlalchemy.orm import sessionmaker
 
 from model.config import DATABASE_URI
 
+########################################################################################
+# Dev Env
+#
+#  psql -h $DBSERVER -U $DBUSER -d $DB -p 5432
+# export DBSERVER="localhost"
+# export DBUSER="postgres"
+# export DB="colout"
+# export DBPASS="colout"
+########################################################################################
 
 def create_database(engine):
     meta = MetaData()
@@ -84,7 +93,7 @@ def create_database(engine):
 
 def drop_database(session):
     session.execute(text("DROP TABLE IF EXISTS "
-                         "contractors, customers, estimates, prices, project_types, projects, subprojects;"))
+                         "contractors, customers, estimates, prices, project_types, projects, subprojects CASCADE;"))
     session.commit()
     session.close()
 

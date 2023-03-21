@@ -1,3 +1,4 @@
 .venv
 .vscode
-model/__pycache__
+*/__pycache__
+__pycache__
