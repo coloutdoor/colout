@@ -1,12 +1,18 @@
 import datetime
 import unittest
+import os
+import sys
 
 from sqlalchemy import select
+
+# getting the name of the directory
+# where the this model dir is present.
+# model_dir = os.path.dirname(os.path.realpath("../model"))
+# sys.path.append(model_dir)
 
 from model.contractor import Contractor
 from model.crud import session
 from tests import ordered
-
 
 def get_contractor_id(business_name='Columbia Outdoor'):
     with session() as s:
