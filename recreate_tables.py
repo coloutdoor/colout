@@ -75,6 +75,7 @@ def create_database(engine):
         Column('id', Integer, primary_key=True),
         Column('contractor_id', ForeignKey("contractors.id", ondelete='NO ACTION', onupdate='NO ACTION')),
         Column('customer_id', ForeignKey("customers.id", ondelete='NO ACTION', onupdate='NO ACTION')),
+        Column('description', VARCHAR(255, collation='default')),
     )
 
     subprojects = Table(

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy import Column, Integer, ForeignKey, String
 
 from model.crud import base
 
@@ -10,6 +10,7 @@ class Projects(base):
                            nullable=False)
     customer_id = Column(Integer, ForeignKey('customers.id', onupdate='SET NULL', ondelete='SET NULL'),
                          nullable=False)
+    description = Column(String)
 
     def __repr__(self):
         return "<id(id='{}', contractor_id='{}', customer_id='{}')>" \
