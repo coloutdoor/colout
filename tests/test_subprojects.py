@@ -2,21 +2,36 @@ import unittest
 
 from model.crud import session
 from model.subprojects import SubProjects
+from model.subproject_types import SubProjectTypes
 from tests import ordered
 from tests.test_projects import get_project_id
+
+def get_subproject_type_id():
+    with session() as s:
+
+        subproject_type = SubProjectTypes(
+            name="Deck Framing Test",
+            description="Frame with premium pressure treated lumber",
+            materials="PT",
+            units = "Sq Ft",
+        )
+        s.add(subproject_type)
+        s.commit()
+
+        return subproject_type.id
 
 
 def get_sub_project_id():
     with session() as s:
         project_id = get_project_id()
-
+        subproject_type_id = get_subproject_type_id()
         subproject = SubProjects(
             project_id=project_id,
             name="Sub Project 1",
             length=100,
             height=100,
             width=100,
-            project_type="Construction"
+            subproject_type_id=subproject_type_id
         )
 
         s.add(subproject)

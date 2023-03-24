@@ -6,12 +6,14 @@ from model.crud import base
 class SubProjects(base):
     __tablename__ = 'subprojects'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
     project_id = Column(Integer, ForeignKey('projects.id'), nullable=False)
+    name = Column(String)
     length = Column(Double)
     width = Column(Double)
     height = Column(Double)
-    project_type = Column(String)
+    subproject_type_id = Column(Integer, ForeignKey('subproject_types.id', onupdate='SET NULL', ondelete='SET NULL'), 
+                             nullable=False)
+ 
 
     def __repr__(self):
         return "<id(id='{}', name='{}', project_id='{}', length={}, width={}, height={}, project_type={})>" \

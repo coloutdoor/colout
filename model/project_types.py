@@ -9,7 +9,6 @@ class ProjectTypes(base):
     name = Column(String)
     description = Column(String)
     materials = Column(String)
-    units = Column(String)
 
     def __repr__(self):
         return "<id(id='{}', name='{}', description='{}', materials={}, units={})>" \

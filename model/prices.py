@@ -7,7 +7,7 @@ class Prices(base):
     __tablename__ = 'prices'
     id = Column(Integer, primary_key=True)
     contractor_id = Column(Integer, ForeignKey('contractors.id'), nullable=False)
-    project_type_id = Column(Integer, ForeignKey('project_types.id'), nullable=False)
+    subproject_type_id = Column(Integer, ForeignKey('subproject_types.id'), nullable=False)
     price_per_unit = Column(String)
 
     def __repr__(self):

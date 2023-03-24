@@ -2,6 +2,7 @@ import datetime
 import unittest
 
 from model.contractor import Contractor
+from model.project_types import ProjectTypes
 from model.crud import session
 from model.customers import Customers
 from model.projects import Projects
@@ -41,12 +42,25 @@ def get_customer_id():
         s.commit()
         return customer.id
 
+def get_project_type_id():
+    with session() as s:
+        project_type = ProjectTypes(
+            name='Deck Project',
+            description='Test Deck Project',
+            materials='Azek',
+        )
+
+        s.add(project_type)
+        s.commit()
+
+        return project_type.id
 
 def get_project_id():
     with session() as s:
         project = Projects(
             contractor_id=get_contractor_id(),
             customer_id=get_customer_id(),
+            project_type_id=get_project_type_id(),
         )
         s.add(project)
         s.commit()

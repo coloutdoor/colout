@@ -4,8 +4,7 @@ from model.crud import session
 from model.prices import Prices
 from tests import ordered
 from tests.test_contractor import get_contractor_id
-from tests.test_project_types import get_project_type_id
-
+from tests.test_subprojects import get_subproject_type_id
 
 class TestPrices(unittest.TestCase):
 
@@ -13,10 +12,10 @@ class TestPrices(unittest.TestCase):
     def test_add(self):
         s = session()
         contractor_id = get_contractor_id()
-        project_type_id = get_project_type_id()
+        subproject_type_id = get_subproject_type_id()
         prices = Prices(
             contractor_id=contractor_id,
-            project_type_id=project_type_id,
+            subproject_type_id=subproject_type_id,
             price_per_unit="25"
         )
 

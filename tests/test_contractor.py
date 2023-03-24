@@ -11,6 +11,7 @@ from sqlalchemy import select
 # sys.path.append(model_dir)
 
 from model.contractor import Contractor
+from model.projects import Projects
 from model.crud import session
 from tests import ordered
 
@@ -73,6 +74,7 @@ class TestContractor(unittest.TestCase):
     @ordered
     def test_del_all(self):
         s = session()
+        count = s.query(Projects).delete()
         count = s.query(Contractor).delete()
         s.commit()
         print(f"Deleted {count} rows from Contractor Table!!! ")

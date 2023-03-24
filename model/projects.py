@@ -8,6 +8,8 @@ class Projects(base):
     id = Column(Integer, primary_key=True)
     contractor_id = Column(Integer, ForeignKey('contractors.id', onupdate='SET NULL', ondelete='SET NULL'),
                            nullable=False)
+    project_type_id = Column(Integer, ForeignKey('project_types.id', onupdate='SET NULL', ondelete='SET NULL'),
+                           nullable=False)
     customer_id = Column(Integer, ForeignKey('customers.id', onupdate='SET NULL', ondelete='SET NULL'),
                          nullable=False)
     description = Column(String)

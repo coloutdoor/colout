@@ -2,6 +2,7 @@ import unittest
 
 from model.crud import session
 from model.project_types import ProjectTypes
+from model.projects import Projects
 from tests import ordered
 
 
@@ -11,7 +12,6 @@ def get_project_type_id():
             name='Construction of a ramp',
             description='Construction of a ramp for wheelchair',
             materials='Cement, steel, etc.',
-            units='metric',
         )
 
         s.add(project_type)
@@ -31,6 +31,7 @@ class TestProjectTypes(unittest.TestCase):
     @ordered
     def test_del_all(self):
         s = session()
+        count = s.query(Projects).delete()
         count = s.query(ProjectTypes).delete()
         s.commit()
         print(f"Deleted {count} rows from ProjectTypes Table!!! ")
