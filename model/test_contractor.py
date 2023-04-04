@@ -5,8 +5,8 @@
 ###############################################################################
 from sqlalchemy import select
 
-from crud import session
-from contractor import *
+from model.crud import session
+from model.contractor import *
 import datetime
 import unittest
 
