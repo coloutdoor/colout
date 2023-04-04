@@ -73,15 +73,15 @@ def create_database(engine):
     projects = Table(
         'projects', meta,
         Column('id', Integer, primary_key=True),
-        Column('contractor_id', ForeignKey("contractors.id", ondelete='NO ACTION', onupdate='NO ACTION')),
-        Column('customer_id', ForeignKey("customers.id", ondelete='NO ACTION', onupdate='NO ACTION')),
+        Column('contractor_id', ForeignKey("contractors.id", ondelete='SET NULL', onupdate='NO ACTION')),
+        Column('customer_id', ForeignKey("customers.id", ondelete='SET NULL', onupdate='NO ACTION')),
     )
 
     subprojects = Table(
         'subprojects', meta,
         Column('id', Integer, primary_key=True),
         Column('name', VARCHAR(255, collation='default')),
-        Column('project_id', ForeignKey("projects.id", ondelete='NO ACTION', onupdate='NO ACTION')),
+        Column('project_id', ForeignKey("projects.id", ondelete='SET NULL', onupdate='NO ACTION')),
         Column('length', Double),
         Column('width', Double),
         Column('height', Double),
