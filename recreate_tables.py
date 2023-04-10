@@ -81,6 +81,7 @@ def create_database(engine):
     subproject_types = Table(
         'subproject_types', meta,
         Column('id', Integer, primary_key=True),
+        Column('project_type_id', ForeignKey("project_types.id", ondelete='NO ACTION', onupdate='NO ACTION')),
         Column('name', VARCHAR(255, collation='default')),
         Column('description', VARCHAR(255, collation='default')),
         Column('materials', VARCHAR(255, collation='default')),
