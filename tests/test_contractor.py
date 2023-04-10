@@ -15,7 +15,7 @@ from model.projects import Projects
 from model.crud import session
 from tests import ordered
 
-def get_contractor_id(business_name='Columbia Outdoor'):
+def get_contractor_id(business_name='Columbia Out Test'):
     with session() as s:
         contractor = Contractor(
             business_name=business_name,

@@ -2,6 +2,7 @@ from sqlalchemy import Table, Column, Integer, Date, MetaData, create_engine, VA
 from sqlalchemy.orm import sessionmaker
 
 from model.config import DATABASE_URI
+from data.contractors_seed import seed_conctractors
 
 ########################################################################################
 # Dev Env
@@ -110,6 +111,7 @@ def drop_database(session):
 
 
 def recreate_database():
+    print("Recreating Databases")
     engine = create_engine(DATABASE_URI, echo=False)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -118,5 +120,10 @@ def recreate_database():
     create_database(engine)
 
 
+def seed_data():
+    print("Seeding Data")
+    seed_conctractors()
+
 if __name__ == '__main__':
     recreate_database()
+    seed_data()
